@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-3</title>
+    <style>
+        #Second{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #multi{
+            margin-right: 5px;
+        }
+        button{
+            border-radius: 4px;
+            border: 2px solid;
+        }
+        button:hover{
+            border-color: skyblue;
+        }
+        #buttons{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="First">
+        <label for="1st_number">1st Number:</label>
+        <input type="text" id="first">
+    </div>
+    <div id="Second">
+        <label for="2st_number">2st Number:</label>
+        <input type="text" id="second">
+    </div>
+    <div id="buttons">
+        <button id="multi" onclick="f1()">Multiply</button>
+        <button onclick="f2()">Divide</button>
+    </div>
+    <div id="result"></div>
+    <script>
+        function f1() {
+            let first_number = parseInt(document.getElementById("first").value);
+            let second_number = parseInt(document.getElementById("second").value);
+            if (!isNaN(first_number) && !isNaN(second_number)) {
+                document.getElementById("result").innerHTML = "The result is:<br>" + first_number * second_number;
+            } else {
+                document.getElementById("result").innerHTML = "Please enter valid numbers.";
+            }
+        }
+
+        function f2() {
+            let first_number = parseInt(document.getElementById("first").value);
+            let second_number = parseInt(document.getElementById("second").value);
+            if (!isNaN(first_number) && !isNaN(second_number) && second_number !== 0) {
+                document.getElementById("result").innerHTML = "The result is:<br>" + first_number / second_number;
+            } else {
+                document.getElementById("result").innerHTML = "Please enter valid numbers and the second number should not be zero.";
+            }
+        }
+    </script>
+</body>
+</html>

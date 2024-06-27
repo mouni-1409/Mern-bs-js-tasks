@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-8</title>
+    <style>
+        table {
+            border: none;
+            margin-left: 450px;
+        }
+        button {
+            color: white;
+            background-color: red;
+            border: 1px solid black;
+            border-radius: 10px;
+            height: 25px;
+            width: 98px;
+            font-size: medium;
+        }
+        input {
+            padding-left: 300px;
+            text-align: left;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <center><h1 style="color: blue;">Registration form</h1></center>
+    <form action="" onsubmit="return form_submission()">
+        <table align="center">
+            <tr>
+                <td align="center"><b>First Name</b></td>
+                <td><input type="text" id="firstname"></td>
+                <td><span class="error" id="FirstNameError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Last Name</b></td>
+                <td><input type="text" id="lastname"></td>
+                <td><span class="error" id="LastNameError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Email</b></td>
+                <td><input type="email" id="email"></td>
+                <td><span class="error" id="EmailError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Password</b></td>
+                <td><input type="password" id="password"></td>
+                <td><span class="error" id="PasswordError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Re-enter Password</b></td>
+                <td><input type="password" id="repassword"></td>
+                <td><span class="error" id="RePasswordError">POOR OR MISMATCH</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Gender</b></td>
+                <td>
+                    <input type="radio" name="gender" value="Male">Male<br>
+                    <input type="radio" name="gender" value="Female">Female
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><b>Age</b></td>
+                <td><input type="text" id="age"></td>
+                <td><span class="error" id="AgeError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Phone Number</b></td>
+                <td><input type="text" id="phonenumber"></td>
+                <td><span class="error" id="PhoneNumberError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Address</b></td>
+                <td><textarea name="address" id="address" cols="60" rows="8"></textarea></td>
+                <td><span class="error" id="AddressError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>State</b></td>
+                <td><input type="text" id="state"></td>
+                <td><span class="error" id="StateError">POOR</span></td>
+            </tr>
+            <tr>
+                <td align="center"><b>Country</b></td>
+                <td>
+                    <select name="Country" id="country">
+                        <option value="">Choose your Country</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="UAE">UAE</option>
+                    </select>
+                    <td><span class="error" id="CountryError">POOR</span></td>
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><b>Languages Known</b></td>
+                <td>
+                    <input type="checkbox" name="language" value="English">English
+                    <input type="checkbox" name="language" value="Kannada">Kannada
+                    <input type="checkbox" name="language" value="Hindi">Hindi
+                    <input type="checkbox" name="language" value="Telugu">Telugu
+                </td>
+            </tr>
+        </table>
+        <table align="center" style="border-top: none;">
+            <tr>
+                <td><input type="checkbox" id="declaration"> Hereby I declare all the given details are true</td>
+                <td><span class="error" id="DeclarationError">POOR</span></td>
+            </tr>
+            <tr>
+                <td style="padding-left: 450px;">Log in to <a href="https://ethnus.com/">Ethnus</a> website</td>
+            </tr>
+        </table>
+        <br>
+        <center><button type="submit">Register</button></center>
+    </form>
+    <script>
+        function form_submission() {
+            let isValid = true;
+            const firstname1 = document.getElementById("firstname").value;
+            const lastname1 = document.getElementById("lastname").value;
+            const password1 = document.getElementById("password").value;
+            const repassword1 = document.getElementById("repassword").value;
+            const age1 = parseInt(document.getElementById("age").value);
+            const phonenumber1 = parseInt(document.getElementById("phonenumber").value);
+            const address1 = document.getElementById("address").value;
+            const state1 = document.getElementById("state").value;
+            const country1 = document.getElementById("country").value;
+            const declaration = document.getElementById("declaration").checked;
+            if (firstname1.length < 5) {
+                document.getElementById('FirstNameError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('FirstNameError').style.display = 'none';
+            }
+            if (lastname1.length < 5) {
+                document.getElementById('LastNameError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('LastNameError').style.display = 'none';
+            }
+            if (password1.length < 6) {
+                document.getElementById('PasswordError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('PasswordError').style.display = 'none';
+            }
+            if (repassword1.length < 6 || repassword1 !== password1) {
+                document.getElementById('RePasswordError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('RePasswordError').style.display = 'none';
+            }
+            if (isNaN(age1) || age1 <= 0) {
+                document.getElementById('AgeError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('AgeError').style.display = 'none';
+            }
+            if (isNaN(phonenumber1) || phonenumber1.toString().length < 10) {
+                document.getElementById('PhoneNumberError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('PhoneNumberError').style.display = 'none';
+            }
+            if (address1.length < 10) {
+                document.getElementById('AddressError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('AddressError').style.display = 'none';
+            }
+            if (state1.length < 3) {
+                document.getElementById('StateError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('StateError').style.display = 'none';
+            }
+            if (country1 === "") {
+                document.getElementById('CountryError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('CountryError').style.display = 'none';
+            }
+            if (!declaration) {
+                document.getElementById('DeclarationError').style.display = 'inline';
+                isValid = false;
+            } else {
+                document.getElementById('DeclarationError').style.display = 'none';
+            }
+            return isValid;
+        }
+    </script>
+</body>
+</html>
